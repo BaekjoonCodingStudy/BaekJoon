@@ -5,11 +5,11 @@ package 백준;
 
 
 1. 아이디어 :
-
+스택 사용
 2. 시간복잡도 :
-O( )
+O( n )
 3. 자료구조 :
-
+스택
 
  */
 import java.io.BufferedReader;
