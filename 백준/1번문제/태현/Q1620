@@ -1,0 +1,34 @@
+#include <iostream>
+#include <unordered_map>
+using namespace std;
+
+string str[100001];
+
+int main() {
+
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);
+  
+  unordered_map<string,int> M;
+  int N,X;
+
+  cin >> N >> X;
+
+  for(int i = 1; i <= N; i++){
+    cin >> str[i];
+    M.insert({str[i],i});
+  }
+
+  for(int i = 0; i < X; i++){
+    string a;
+    cin >> a;
+    
+    if(a[0] >= '0' && a[0] <= '9'){
+      int num = stoi(a);
+      cout << str[num] << '\n';
+      continue;
+    }
+    cout << M.find(a)->second << '\n';
+  }
+  
+}
