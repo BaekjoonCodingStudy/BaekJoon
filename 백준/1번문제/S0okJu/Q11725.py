@@ -32,6 +32,7 @@ def invalid_solution():
         
 import sys
 # 재귀의 최대 깊이
+# 없으면 런타임에러(RecursionError)
 sys.setrecursionlimit(10**6)
 
 def search(node):
