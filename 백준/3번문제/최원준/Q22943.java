@@ -51,11 +51,17 @@ class Q22943 {
         return primeList;
     }
 
-
     public static boolean rule1(Set<Integer> primeList, int n) {
-        if ((n!=4 && primeList.contains(n-2)) || (n>=7 && n%2 == 0)) return true;
+        for (var num : primeList) {
+            if (primeList.contains(n-num) && n-num != num) return true;
+        }
         return false;
     }
+
+//    public static boolean rule1(Set<Integer> primeList, int n) {
+//        if ((n!=4 && primeList.contains(n-2)) || (n>=7 && n%2 == 0)) return true;
+//        return false;
+//    }
 
     public static boolean rule2(Set<Integer> primeList, int n, int M) {
         while (n%M == 0) {
