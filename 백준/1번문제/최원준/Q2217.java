@@ -41,3 +41,16 @@ class Q2217 {
         System.out.println(ans);
     }
 }
+
+/*
+import sys
+input = lambda: sys.stdin.readline().rstrip()
+
+def solution(n, ropes):
+    return max([ropes[i] * (i+1) for i in range(len(ropes))])
+
+if __name__ == '__main__':
+    n = int(input())
+    ropes = sorted([int(input()) for _ in range(n)], key=lambda x: -x)
+    print(solution(n, ropes))
+ */
