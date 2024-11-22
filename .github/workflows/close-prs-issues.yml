@@ -2,8 +2,7 @@ name: Merge or Close stale PRs, ISSUEs
 
 on:
   schedule:
-     - cron: "0 21 * * *" # 한국 시간 매일 오전 6시에 실행
-#    - cron: "*/1 * * * *" # 매 1분마다 실행
+    - cron: "0 21 * * *" # 한국 시간 매일 오전 6시에 실행
   workflow_dispatch:
 
 permissions:
@@ -24,8 +23,11 @@ jobs:
         run: |
           prs=$(gh pr list --state open --json number --jq '.[].number')
           for pr in $prs; do
+            echo "Processing PR #$pr..."
             if gh pr merge $pr --merge; then
               echo "PR #$pr merged successfully."
+              echo "Waiting for 1 minute before processing the next PR..."
+              sleep 60 # 1분 대기
             else
               echo "Failed to merge PR #$pr. Closing the PR."
               gh pr close $pr --comment "Automatically closing stale PR #$pr due to merge failure."
