@@ -8,13 +8,13 @@ w(물체의 중량) / k(로프의 개수) = 로프의 중량
 - max 물체의 중량 = 로프의 중량 min * 로프의 개수 max
 
 2. 시간복잡도 :
-O(n)
+O(nlogn)
 
 3. 자료구조 : x
 
 """
 def solution(n, max_w):
-    sorted_max_w = sorted(max_w)
+    sorted_max_w = sorted(max_w) # O(nlogn)
     k = n 
     hw = 0
     for j in range(len(sorted_max_w)):
