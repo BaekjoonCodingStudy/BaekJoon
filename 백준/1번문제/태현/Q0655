@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+long dp[1001];
+
+int main() {
+
+   int n;
+   cin >> n;
+
+   if (n % 2 == 1) {
+      cout << "SK";
+   }else {
+      cout << "CY";
+   }
+
+   return 0;
+}
+
+시간복잡도 : O(1)
+아이디어 : 상근이가 무조껀 먼저 시작하고 가져갈수 있는 돌이 한번에 1개 또는 3개여서 이것도 그림 그리면서 홀수는 상근 짝수는 창영이가 이긴다고 생각했습니다.
