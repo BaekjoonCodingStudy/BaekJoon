@@ -17,14 +17,15 @@ def solution():
                 
     k = int(input())
     for _ in range(k):
+        # (a,b) (x,y)
         inputs = list(map(int,input().split()))
-        # print(f"calculated[inputs[2]][inputs[3]]: {calculated[inputs[2]][inputs[3]]}")
-        # print(f"- calculated[inputs[0]][inputs[3]]: {-calculated[inputs[0]][inputs[3]]}")
-        # print(f"- calculated[inputs[2]][inputs[1]]: {-calculated[inputs[2]][inputs[1]]}")
-        # print(f"+ calculated[inputs[0]][inputs[1]]: {calculated[inputs[0]][inputs[1]]}")
+        print(f"calculated[inputs[2]][inputs[3]]: {calculated[inputs[2]][inputs[3]]}")
+        print(f"- calculated[inputs[0]][inputs[3]]: {-calculated[inputs[0]][inputs[3]]}")
+        print(f"- calculated[inputs[2]][inputs[1]]: {-calculated[inputs[2]][inputs[1]]}")
+        print(f"+ calculated[inputs[0]][inputs[1]]: {calculated[inputs[0]][inputs[1]]}")
         if inputs[0] == 1 and inputs[1] == 1:
             res = calculated[inputs[2]][inputs[3]]
-        # (x,y) - (x-a,y) - (x,y-b) + (x-a,y-b)
+        # (x,y) - (a,y) - (x,b) + (a,b)
         else:
             res = calculated[inputs[2]][inputs[3]] - calculated[inputs[0]][inputs[3]] - calculated[inputs[2]][inputs[1]] + calculated[inputs[0]][inputs[1]]
         print(res)
