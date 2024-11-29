@@ -1,0 +1,68 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+char bord[1000][1000];
+char aw[1000][1000];
+vector<pair<int,int>> v1;
+
+pair<int,int> num[8] = {{-1,0},{1,0},{0,-1},{0,1},{-1,1},{-1,-1},{1,1},{1,-1}};
+int main() {
+
+   ios_base :: sync_with_stdio(false);
+   cin.tie(NULL);
+   cout.tie(NULL);
+
+   int N;
+   cin >> N;
+
+   for (int i = 0; i < N; i++) {
+      for (int j = 0; j < N; j++) {
+         cin >> bord[i][j];
+         if (bord[i][j] == '*') {
+            v1.push_back({i,j});
+         }
+      }
+   }
+
+   bool boomCk = false;
+   for (int i = 0; i < N; i++) {
+      for (int j = 0; j < N; j++) {
+         cin >> aw[i][j];
+         if (aw[i][j] == 'x') {
+            int count = 0;
+            if (bord[i][j] == '*') {
+               boomCk = true;
+            }
+            for (auto ck: num) {
+               int a = i + ck.first;
+               int b = j + ck.second;
+               if (a < 0 || b < 0 || a > N || b > N) {
+                  continue;
+               }
+               if (bord[a][b] == '*') {
+                  count++;
+               }
+            }
+            aw[i][j] = count + '0';
+         }else {
+            aw[i][j] = '.';
+         }
+      }
+   }
+
+   if (boomCk) {
+      for (int i = 0; i < v1.size(); i++) {
+         aw[v1[i].first][v1[i].second] = '*';
+      }
+   }
+
+   for (int i = 0; i < N; i++) {
+      for (int j = 0; j < N; j++) {
+         cout << aw[i][j];
+      }
+      cout << '\n';
+   }
+
+   return 0;
+}
