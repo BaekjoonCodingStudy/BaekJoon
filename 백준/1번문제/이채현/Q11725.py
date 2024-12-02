@@ -26,4 +26,8 @@ for _ in range(N - 1):
 DFS(tree, 1, parent)
         
 for i in range(2, N + 1):
+<<<<<<< HEAD
     print(parent[i])
+=======
+    print(parent[i])
+>>>>>>> c225520647d99c754b3b71222e94eb9fe2d6dc8b

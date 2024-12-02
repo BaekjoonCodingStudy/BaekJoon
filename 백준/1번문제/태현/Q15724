@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+
+struct node {
+   int num;
+   int R;
+   int D;
+   int T;
+};
+
+node bord[1500][1500];
+
+int main() {
+
+   int N,M;
+
+   cin >> N >> M;
+
+   for (int i = 1; i <= N; i++) {
+      for (int j = 1; j <= M; j++) {
+         cin >> bord[i][j].num;
+         if (i == 1) {
+            bord[i][j].D = bord[i][j].num;
+            bord[i][j].R = bord[i][j].num + bord[i][j-1].R;
+            bord[i][j].T = ((bord[i][j].R + bord[i][j].D) - bord[i][j].num) + bord[i-1][j-1].T;
+            continue;
+         }
+         if (j == 1) {
+            bord[i][j].R = bord[i][j].num;
+            bord[i][j].D = bord[i][j].num + bord[i-1][j].D;
+            bord[i][j].T = ((bord[i][j].R + bord[i][j].D) - bord[i][j].num) + bord[i-1][j-1].T;
+            continue;
+         }
+         bord[i][j].R = bord[i][j].num + bord[i][j-1].R;
+         bord[i][j].D = bord[i][j].num + bord[i-1][j].D;
+         bord[i][j].T = ((bord[i][j].R + bord[i][j].D) - bord[i][j].num) + bord[i-1][j-1].T;
+      }
+   }
+   
+   int K;
+   int a1,b1,a2,b2;
+   cin >> a1 >> b1 >> a2 >> b2;
+   
+   for (int i = a1; i <= b1; i++) {
+      for (int j = a2; j <= b2; j++) {
+         if (i == a1) {
+            bord[i][j].D = bord[i][j].num;
+            bord[i][j].R = bord[i][j].num + bord[i][j-1].R;
+            bord[i][j].T = ((bord[i][j].R + bord[i][j].D) - bord[i][j].num) + bord[i-1][j-1].T;
+            continue;
+         }
+         if (j == a2) {
+            bord[i][j].R = bord[i][j].num;
+            bord[i][j].D = bord[i][j].num + bord[i-1][j].D;
+            bord[i][j].T = ((bord[i][j].R + bord[i][j].D) - bord[i][j].num) + bord[i-1][j-1].T;
+            continue;
+         }
+         bord[i][j].R = bord[i][j].num + bord[i][j-1].R;
+         bord[i][j].D = bord[i][j].num + bord[i-1][j].D;
+         bord[i][j].T = ((bord[i][j].R + bord[i][j].D) - bord[i][j].num) + bord[i-1][j-1].T;
+      }
+   }
+
+   cin >> K;
+   for (int i = 0; i < K; i++) {
+      cout << bord[a2][b2].T;
+   }
+
+   return 0;
+}

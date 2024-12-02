@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+long dp[1001];
+
+int main() {
+
+   int n;
+   cin >> n;
+
+   dp[1] = 1;
+   dp[2] = 2;
+   dp[3] = 3;
+
+   for (int i = 4; i <= n; i++) {
+      dp[i] = (dp[i-1]+dp[i-2]) % 10007;
+   }
+
+   cout << dp[n];
+
+   return 0;
+}
+
+시간복잡도 O(n)
+
+아이디어 : 간단히 그림 그려가면서 규칙을 찾았습니다. 
