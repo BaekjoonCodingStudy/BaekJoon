@@ -1,0 +1,86 @@
+#include <iostream>
+#include <queue>
+#include <algorithm>
+using namespace std;
+
+char bord[30][30];
+int ck[30][30];
+
+int X[4] = {0,1,0,-1};
+int Y[4] = {1,0,-1,0};
+int T[700];
+queue<pair<int,int>> q;
+
+int main() {
+
+   ios_base :: sync_with_stdio(false);
+   cin.tie(NULL);
+   cout.tie(NULL);
+
+   int N;
+   cin >> N;
+
+   for (int i = 0; i < N; i++) {
+      for (int j = 0; j < N; j++) {
+         cin >> bord[i][j];
+      }
+   }
+
+   // BFS
+   int aw = 0;
+   for (int i = 0; i < N; i++) {
+      for (int j = 0; j < N; j++) {
+
+         if (bord[i][j] == '1' && ck[i][j] == 0) {
+            aw++;
+            ck[i][j] = aw;
+
+            q.push({i,j});
+
+            while (!q.empty()) {
+
+               auto test = q.front();
+               q.pop();
+               int x = test.first;
+               int y = test.second;
+
+               for (int e = 0 ; e < 4; e++) {
+                  int xx = x + X[e];
+                  int yy = y + Y[e];
+
+                  if (xx < 0 || yy < 0 || xx >= N || yy >= N) {
+                     continue;
+                  }
+
+                  if (bord[xx][yy] == '1' && ck[xx][yy] == 0) {
+                     // 몇번째 인지 저장.
+                     ck[xx][yy] = aw;
+                     q.push({xx,yy});
+                  }
+               }
+            }
+         }
+      }
+   }
+
+   cout << aw << '\n';
+   for (int i = 0; i < N; i++) {
+      for (int j = 0; j < N; j++) {
+         // 단지번호 개수 카운트 .
+         if (bord[i][j] != '0') {
+            T[ck[i][j]]++;
+         }
+      }
+   }
+
+   // 정렬
+   sort(T + 1, T + (aw + 1));
+
+   for (int i = 1; i <= aw; i++) {
+      cout << T[i] << '\n';
+   }
+
+   // O(n^2)
+   
+   return 0;
+}
