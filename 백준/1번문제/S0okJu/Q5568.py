@@ -4,9 +4,9 @@
 - 순서가 중요한 순열을 계산해서 set으로 중복 제거 
 
 2. 시간복잡도 :
-O(n)
+O(n!)
 
-3. 자료구조 : x
+3. 자료구조 : 브루트포스
 
 """
 from itertools import permutations
