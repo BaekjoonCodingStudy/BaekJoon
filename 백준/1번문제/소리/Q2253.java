@@ -44,7 +44,7 @@ class Main {
 
         for(int i=0; i<y;i++){
             for(int j=0; j<x;j++) {
-                System.out.print( result[i][j] + " ");
+                System.out.print( result[i][j]);
             }
             System.out.println();
         }
