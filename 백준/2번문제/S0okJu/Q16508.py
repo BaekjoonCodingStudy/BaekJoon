@@ -35,7 +35,7 @@ def min_cost(books, prices, target):
     # 책은 최소 한개
     for r in range(1, n+1):
         # comb (0,), (1,), (0, 1)
-        for comb in combinations(range(n),r):
+        for comb in combinations(range(n),r): 
             combined = {}
             # print(comb)
             cost = 0
