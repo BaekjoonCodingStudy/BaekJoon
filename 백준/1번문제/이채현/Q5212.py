@@ -4,7 +4,7 @@
 - 4방향을 for문으로 탐색
 - 
 2. 시간복잡도
-- O(NM):
+- O(NM*4+NM): O(NM)
 3. 자료구조
 - map
 - 위치, 방향, 바다에 잠긴 곳
@@ -72,7 +72,7 @@ for x in range(R):
         if map_list[x][y] == 'X':
             loc.append((x,y))
             
-min_x = min(loc[0] for loc in loc)
+min_x = min(loc[0] for loc in loc) # n
 max_x = max(loc[0] for loc in loc)
 min_y = min(loc[1] for loc in loc)
 max_y = max(loc[1] for loc in loc)
