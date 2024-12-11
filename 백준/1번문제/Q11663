@@ -1,0 +1,44 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+vector<int> point;
+
+int main() {
+
+   ios_base :: sync_with_stdio(false);
+   cin.tie(NULL);
+   cout.tie(NULL);
+
+   int N,M;
+   cin >> N >> M;
+
+   for (int i = 0; i < N; i++) {
+      int a;
+      cin >> a;
+      point.push_back(a);
+   }
+
+   sort(point.begin(),point.end());
+
+   while (M--) {
+      int a, b, aw = 0;
+      cin >> a >> b;
+
+      for (int i = 0; i < N; i++) {
+
+         if (b < point[i])
+            break;
+
+         if (a <= point[i] && b >= point[i]) {
+            aw++;
+         }
+
+      }
+      cout << aw << '\n';
+   }
+
+   return 0;
+}
+// a < point[i] && 
