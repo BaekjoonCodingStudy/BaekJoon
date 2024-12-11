@@ -1,10 +1,11 @@
 package com.example.algorithm.이분탐색;
 import java.io.*;
 import java.util.*;
-public class bj11663 {
+
+public class Main {
     public static int[] dot;
     public static int min, max, n;
-    public static void Main(String args[]) throws Exception {
+    public static void main(String args[]) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
         n = Integer.parseInt(st.nextToken()); //점 갯수
@@ -14,6 +15,7 @@ public class bj11663 {
         for(int i=0; i<n; i++){
             dot[i] = Integer.parseInt(st.nextToken());
         }
+        Arrays.sort(dot);
         min = dot[0]; //시작
         max = dot[n-1]; //끝
         StringBuffer sb = new StringBuffer();
@@ -23,6 +25,7 @@ public class bj11663 {
             int end = Integer.parseInt(st.nextToken());
             sb.append(count(start, end)).append("\n");
         }
+        System.out.println(sb);
 
     }
     public static int count(int start, int end){
@@ -36,22 +39,49 @@ public class bj11663 {
 
         //시작 부분 이분탐색
         if(start > min){
-            stIdx = find(start, stIdx, endIdx);
+            stIdx = findStart(start);
         }
 
         //끝부분 이분탐색
         if(end < max){
-            endIdx = find(end, stIdx, endIdx);
+            endIdx = findEnd(end);
         }
 
         return endIdx - stIdx +1;
 
     }
 
-    public static int find(int now, int start, int end){
 
-        //todo 이분탐색 구현
 
-        return 0;
+    public static int findStart(int value) {
+        int start = 0, end = n;
+
+        while (start < end) {
+            int mid = (start + end) / 2;
+
+            if (dot[mid] < value) {
+                start = mid + 1;
+            } else {
+                end = mid;
+            }
+        }
+
+        return start;
+    }
+
+    public static int findEnd(int value) {
+        int start = 0, end = n;
+
+        while (start < end) {
+            int mid = (start + end) / 2;
+
+            if (dot[mid] <= value) {
+                start = mid + 1;
+            } else {
+                end = mid;
+            }
+        }
+
+        return start - 1;
     }
 }
