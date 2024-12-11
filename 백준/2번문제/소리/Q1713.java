@@ -1,6 +1,5 @@
-package com.example.algorithm.구현;
 import java.util.*;
-public class Q1713 {
+public class Main {
     public static void main(String args[]) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -18,7 +17,6 @@ public class Q1713 {
                 if(result[j] == 0){
                     result[j] = nc;
                     cnt[j] = 1;
-                    recent[j] = idx++;
                     flag = false;
                     break;
                 }else if( result[j] == nc){
@@ -30,7 +28,7 @@ public class Q1713 {
             // 다 돌았는데도 자리가 없으면 삭제해야함.
             if(flag){
                 List<Integer> list = new ArrayList<>();
-                int min = n;
+                int min = Integer.MAX_VALUE;
                 for(int j=0; j<n;j++){
                     if(min > cnt[j]){
                         min = cnt[j];
@@ -42,34 +40,67 @@ public class Q1713 {
                         list.add(j);
                     }
                 }
+
+                int a = 0;
                 if(list.size() == 1){
-                    int a = list.get(0);
-                    result[a] = nc;
-                    cnt[a] = 1;
-                    recent[a] = idx++;
+                    a = list.get(0);
                 }else if( list.size() > 1){
                     int mv = Integer.MAX_VALUE;
-                    int a = 0;
                     for(int b : list){
                         if(recent[b]<mv){
                             mv = recent[b];
                             a = b;
                         }
                     }
-                    result[a] = nc;
-                    cnt[a] = 1;
-                    recent[a] = idx++;
+
                 }
+                    flag = false;
+                    break;
+                }else if( result[j] == nc){
+                    cnt[j]++;
+                    flag = false;
+                    break;
+                }
+            }
+            // 다 돌았는데도 자리가 없으면 삭제해야함.
+            if(flag){
+                List<Integer> list = new ArrayList<>();
+                int min = Integer.MAX_VALUE;
+                for(int j=0; j<n;j++){
+                    if(min > cnt[j]){
+                        min = cnt[j];
+                    }
+                }
+                //인덱스 1개라면 해당 사진 삭제하고 넣기
+                for(int j=0; j<n;j++){
+                    if(min == cnt[j]){
+                        list.add(j);
+                    }
+                }
+
+                int a = 0;
+                if(list.size() == 1){
+                    a = list.get(0);
+                }else if( list.size() > 1){
+                    int mv = Integer.MAX_VALUE;
+                    for(int b : list){
+                        if(recent[b]<mv){
+                            mv = recent[b];
+                            a = b;
+                        }
+                    }
+
+                }
+                cnt[a] = 0;
+                result[a] = nc;
+                cnt[a] = 1;
+                recent[a] = idx++;
                 //인덱스 2개이상이라면 오래된 사진 삭제하고 넣기
 
             }
 
         }
-        Arrays.sort(result);
 
-        for(int j=0; j<n;j++) {
-            System.out.print(result[j] + " ");
-        }
         /**
          * 학생들이 추천을 시작하기 전에 모든 사진틀은 비어있다.
          * 어떤 학생이 특정 학생을 추천하면, 추천받은 학생의 사진이 반드시 사진틀에 게시되어야 한다.
@@ -77,7 +108,12 @@ public class Q1713 {
          * 현재 사진이 게시된 학생이 다른 학생의 추천을 받은 경우에는 추천받은 횟수만 증가시킨다.
          * 사진틀에 게시된 사진이 삭제되는 경우에는 해당 학생이 추천받은 횟수는 0으로 바뀐다.
          * */
-
+        Arrays.sort(result);
+        for(int j=0; j<n;j++) {
+            if(result[j] != 0){
+                System.out.print(result[j] + " ");
+            }
+        }
     }
 
 }
