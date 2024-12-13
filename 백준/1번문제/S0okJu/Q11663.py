@@ -6,6 +6,9 @@
 참고 : https://milkclouds.work/why-we-should-use-half-opened-interval-on-binary-search/
 
 """
+import sys
+input = sys.stdin.readline
+
 n, m = map(int,input().split())
 points = list(map(int, input().split()))
 points.sort()
