@@ -10,7 +10,7 @@ def recommendation(n, s, candidates):
                 candidates[i] = 1
             # 만약에 사진이 꽉차있다면 변경하는 작업이 필요함
             else:
-        
+                pass 
         min_likes = min(min_likes, candidates[i])    
                 
          
