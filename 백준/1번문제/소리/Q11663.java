@@ -36,6 +36,9 @@ public class Main {
         if(start > max || end < min){
             return 0; //겹치는부분 없음.
         }
+        /**
+         * findStart(start)는 시작 지점 start 이상의 첫 번째 인덱스
+         * findEnd(end)는 끝 지점 end 이하의 마지막 인덱스.*/
 
         //시작 부분 이분탐색
         if(start > min){
@@ -54,6 +57,8 @@ public class Main {
 
 
     public static int findStart(int value) {
+
+        //findStart는 value 이상이 처음 등장하는 위치
         int start = 0, end = n;
 
         while (start < end) {
@@ -70,6 +75,8 @@ public class Main {
     }
 
     public static int findEnd(int value) {
+
+        //findEnd는 value 이하의 마지막 위치
         int start = 0, end = n;
 
         while (start < end) {
