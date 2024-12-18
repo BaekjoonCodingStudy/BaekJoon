@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+int board[100001];
+int ck[100001];
+int main() {
+
+   ios_base :: sync_with_stdio(false);
+   cin.tie(NULL);
+   cout.tie(NULL);
+
+   int N;
+
+   cin >> N;
+
+   for (int i = 0; i < N; i++) {
+      cin >> board[i];
+   }
+
+   for (int i = 1; i <= N; i++) {
+      // 지금 위치 해 있는 악보 보다 이전 악보가 크면.
+      if (board[i] < board[i-1]) {
+         // 실수 +1
+         ck[i] += ck[i-1] + 1;
+      }else {
+         // 크지 않으면 이전에 실수한 횟수 저장.
+         ck[i] = ck[i-1];
+      }
+   }
+
+   int Q;
+   cin >> Q;
+
+   // 배열이 0부터 시작하는걸 인지 못함...
+   for (int i = 0; i < Q; i++) {
+      int a,b;
+      cin >> a;
+      cin >> b;
+
+      // 처음부터 ck[b-1] 까지 실수한 부분 - 처음부터 ck[a-1] 까지 실수한 부분 = 정답.
+      cout << ck[b-1] - ck[a-1] << '\n';
+   }
+
+}
+ O(N+Q)
