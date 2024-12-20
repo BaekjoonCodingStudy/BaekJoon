@@ -4,11 +4,11 @@ package 백준;
 /*
 
 1. 아이디어 :
-
+    bfs
 2. 시간복잡도 :
-    O( )
+    O( N + M )
 3. 자료구조 :
-
+    배열
 
  */
 import java.io.BufferedReader;
