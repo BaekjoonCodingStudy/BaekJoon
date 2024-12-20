@@ -28,7 +28,7 @@ public class Q1719 {
         int[][] path = new int[N + 1][N + 1];
 
         for (int i = 1; i <= N; i++) {
-            Arrays.fill(dist[i], 200 * 10000);
+            Arrays.fill(dist[i], 10000);
             dist[i][i] = 0;
         }
 
