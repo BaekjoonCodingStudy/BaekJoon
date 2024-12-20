@@ -1,5 +1,6 @@
 """
-O(N^2)
+아이디어 : 먼저 방문하는 것이 최단거리
+시간 복잡도 : O(N^2)
 """
 from collections import deque
 import sys
@@ -30,10 +31,11 @@ while queue:
     
     # 이동할 수 있는 모든 도시 확인
     for next_city in graph[current]:
-    
+        # 먼저 방문하는 것이 최단거리
         if distance[next_city] == -1:
             distance[next_city] = distance[current] + 1
             queue.append(next_city)
+        print(queue)
 
 
 result = []
