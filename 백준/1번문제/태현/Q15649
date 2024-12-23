@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+int N,M;
+int arr[10];
+bool ck[10];
+
+void func(int n){
+
+  if(n == M){
+    for(int i = 0; i < M; i++){
+      cout << arr[i] << ' ';
+    }
+    cout << '\n';
+  }
+
+  for(int i = 1; i <= N; i++){
+    if(!ck[i]){
+      arr[n] = i;
+      ck[i] = true;
+      func(n+1);
+      ck[i] = false;
+    }
+  }
+  
+}
+int main() {
+
+  cin >> N >> M;
+  func(0);
+
+}
