@@ -5,6 +5,7 @@ input = sys.stdin.readline
 matrix = [[0] * 129 for _ in range(129)]
 blue = white = 0
 
+# 모든 타일의 색깔이 같은지 확인
 def is_same(a, b, size):
     color = matrix[a][b]
     for i in range(a, a + size):

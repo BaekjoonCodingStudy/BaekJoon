@@ -1,6 +1,7 @@
 """
 아이디어 : 먼저 방문하는 것이 최단거리
-시간 복잡도 : O(N+M)
+시간 복잡도 : O(N)
+- ahems s
 알고리즘 : BFS
 """
 from collections import deque
@@ -13,7 +14,7 @@ n, m, k, x = map(int, input().split())
 # 그래프 초기화
 # 1 [2, 3]
 # 2 [3, 4]
-# 3 []
+# 3 [4]
 # 4 []
 graph = [[] for _ in range(n + 1)]
 for _ in range(m):
@@ -49,6 +50,7 @@ for i in range(1, n + 1):
 if not result:
     print(-1)
 else:
-    result.sort()  
+    # result.sort()  
+    # 오름차순으로 저장되므로 sort는 필요 없을 것 같다. 
     for city in result:
         print(city)
